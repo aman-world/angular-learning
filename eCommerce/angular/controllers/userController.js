@@ -1,9 +1,5 @@
 
-app.controller('userController', function () {
+app.controller('userController', ['userService', function (userService) {
     var userCtrl = this;
-    userCtrl.user  = {
-        email: 'aman.gupta@mindstix.com',
-        name: 'Aman Gupta',
-        company: 'Mindstix Software Labs'
-    };
-});
+    userCtrl.user = userService.user;
+}]);

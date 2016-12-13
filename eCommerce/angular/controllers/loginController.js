@@ -1,5 +1,5 @@
 
-app.controller('loginController',['$http', '$cookies', function ($http, $cookies) {
+app.controller('loginController',['userService', '$cookies',function (userService, $cookies) {
     var loginCtrl = this;
     loginCtrl.isloginError = false;
     loginCtrl.errorMessage = '';
@@ -8,13 +8,14 @@ app.controller('loginController',['$http', '$cookies', function ($http, $cookies
             email: this.email,
             password: this.password
         };
-        $http.post('/users/login', credentials).then(function(response){
-
-        },function(err){
-            loginCtrl.isloginError = true;
-            loginCtrl.errorMessage = err.data.message;
-            console.log(err.data.message);
+        userService.authenticateUser(credentials, function(err, response){
+            if(err){
+                loginCtrl.isloginError = true;
+                loginCtrl.errorMessage = err.data.message;
+            }
+            $cookies.put('userName',response.data.name);
+            var username = $cookies.get("userName");
+            console.log('username',username);
         });
-
     }
 }]);
