@@ -1,5 +1,5 @@
 
-app.controller('loginController',['userService', '$cookies',function (userService, $cookies) {
+app.controller('loginController',['userService', '$cookies', '$location', function (userService, $cookies, $location) {
     var loginCtrl = this;
     loginCtrl.isloginError = false;
     loginCtrl.errorMessage = '';
@@ -14,8 +14,7 @@ app.controller('loginController',['userService', '$cookies',function (userServic
                 loginCtrl.errorMessage = err.data.message;
             }
             $cookies.put('userName',response.data.name);
-            var username = $cookies.get("userName");
-            console.log('username',username);
+            $location.path('/user');
         });
     }
 }]);

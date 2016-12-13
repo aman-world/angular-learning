@@ -10,4 +10,8 @@ app.service('userService',['$http', function($http){
             return callback(err, null);
         });
     };
+    service.getUser = function () {
+        console.log('User:', JSON.stringify(service.user));
+        return service.user;
+    };
 }]);
