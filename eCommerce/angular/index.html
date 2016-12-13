@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eCommerce">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>eCommerce</title>
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.js"></script>
+<script src="/controllers/main.js"></script>
+<script src="/routes/router.js"></script>
+<script src="/controllers/loginController.js"></script>
+
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>E-Commerce</h1>
+        </div>
+        <div class="row">
+            <ng-view></ng-view>
+        </div>
+    </div>
+</body>
+</html>
