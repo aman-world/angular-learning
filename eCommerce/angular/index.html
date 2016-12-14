@@ -8,29 +8,34 @@
     <title>eCommerce</title>
 </head>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.js"></script>
-<script src="/controllers/main.js"></script>
-<script src="/routes/router.js"></script>
-<script src="/controllers/loginController.js"></script>
-<script src="/controllers/userController.js"></script>
-<script src="/services/userService.js"></script>
-
 <body>
-    <div class="container">
-        <div class="page-header">
-            <div class="row">
-                <div class="col-sm-3"><h1>E-Commerce</h1></div>
-                <div class="col-sm-6"></div>
-                <div class="col-sm-3"></div>
-            </div>
-        </div>
+<div class="container">
+    <div class="page-header">
         <div class="row">
-            <ng-view></ng-view>
+            <div class="col-sm-3"><h1>E-Commerce</h1></div>
+            <div class="col-sm-6"></div>
+            <div class="col-sm-3"></div>
         </div>
     </div>
+    <div class="row">
+        <ng-view></ng-view>
+    </div>
+</div>
+
+<!-- Vendors -->
+<script src="/js/angular.js"></script>
+<script src="/js/angular-route.js"></script>
+<script src="/js/angular-cookies.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="/main.js"></script>
+
+<!-- Controllers -->
+<script src="/controllers/headerController.js"></script>
+<script src="/controllers/loginController.js"></script>
+<script src="/controllers/userController.js"></script>
+<!-- Services -->
+<script src="/services/userService.js"></script>
 </body>
 </html>
