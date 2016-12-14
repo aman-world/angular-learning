@@ -1,18 +1,25 @@
 var app = angular.module('eCommerce', ['ngRoute', 'ngCookies']);
 
+app.run(function($rootScope) {
+    $rootScope.date = new Date();
+});
+
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
+            templateUrl: 'views/login.html',
             controller: 'loginController',
-            templateUrl: 'views/login.html'
+            controllerAs: 'loginCtrl'
         })
         .when('/login', {
-            templateUrl: 'views/login.html'
+            templateUrl: 'views/login.html',
+            controller: 'loginController',
+            controllerAs: 'loginCtrl'
         })
-        .when('/user', {
-            templateUrl: 'views/user.html'
+        .when('/users', {
+            templateUrl: 'views/user.html',
+            controller: 'userController',
+            controllerAs: 'userCtrl'
         })
-        .otherwise('/', {
-            templateUrl: 'views/login.html'
-        });
+        .otherwise({redirectTo:'/'});
 });

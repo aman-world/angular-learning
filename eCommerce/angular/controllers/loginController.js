@@ -1,8 +1,12 @@
-app.controller('loginController', ['userService', '$cookies', '$location', function (userService, $cookies, $location) {
+app.controller('loginController', function ($rootScope, $cookies, $location, userService, sessionService) {
     var loginCtrl = this;
     loginCtrl.isloginError = false;
     loginCtrl.errorMessage = '';
-    loginCtrl.authenticateUser = function () {
+    loginCtrl.authenticateUser = authenticateUser;
+    loginCtrl.deAuthenticateUser = deAuthenticateUser;
+    init();
+
+    function authenticateUser() {
         var credentials = {
             email: this.email,
             password: this.password
@@ -13,7 +17,23 @@ app.controller('loginController', ['userService', '$cookies', '$location', funct
                 loginCtrl.errorMessage = err.data.message;
             }
             $cookies.put('userName', response.data.name);
-            $location.path('/user');
+            sessionService.setSessionId(response.data.sessionId);
+            $rootScope.displayLogout = true;
+            $location.path('/users');
         });
     }
-}]);
+
+    function deAuthenticateUser() {
+        sessionService.removeSessionId();
+        $cookies.remove('userName');
+        $location.path('/login');
+    }
+
+    function init(){
+        sessionService.removeSessionId();
+        $cookies.remove('userName');
+        loginCtrl.errorMessage = '';
+        $rootScope.displayLogout = false;
+        $rootScope.deAuthenticateUser = loginCtrl.deAuthenticateUser;
+    }
+});

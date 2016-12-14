@@ -12,9 +12,15 @@
 <div class="container">
     <div class="page-header">
         <div class="row">
-            <div class="col-sm-3"><h1>E-Commerce</h1></div>
+            <div class="col-sm-3">
+                <h2><span class="label label-primary">E-Commerce</span></h2>
+            </div>
             <div class="col-sm-6"></div>
-            <div class="col-sm-3"></div>
+            <div class="col-sm-3">
+                <h3>
+                    <button ng-show="displayLogout" ng-click="deAuthenticateUser()" class="btn btn-danger pull-right">Logout</button>
+                </h3>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -32,10 +38,11 @@
 <script src="/main.js"></script>
 
 <!-- Controllers -->
-<script src="/controllers/headerController.js"></script>
 <script src="/controllers/loginController.js"></script>
 <script src="/controllers/userController.js"></script>
+
 <!-- Services -->
 <script src="/services/userService.js"></script>
+<script src="/services/sessionService.js"></script>
 </body>
 </html>

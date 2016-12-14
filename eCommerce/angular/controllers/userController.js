@@ -1,19 +1,20 @@
-app.controller('userController', ['userService', '$cookies', function (userService, $cookies) {
+app.controller('userController', function ($rootScope, $cookies, sessionService, userService) {
     var userCtrl = this;
-    userCtrl.username = '';
-    userCtrl.user = {};
-    userCtrl.setUserName = setUserName;
-
+    userCtrl.userList = [];
+    userCtrl.sessionId = null;
     init();
 
-    function setUserName() {
-        if (userCtrl.username) return true;
-        return false;
-    }
 
     function init() {
-        var username = $cookies.get("userName");
-        userCtrl.username = username;
-        userCtrl.user = userService.getUser();
+        userCtrl.sessionId = sessionService.getSessionId();
+        $rootScope.displayLogout = true;
+        userService.getUserList(userCtrl.sessionId, function(err, response){
+            if(err) {
+                if(err.status === 401) {
+                    $rootScope.deAuthenticateUser();
+                }
+            }
+            userCtrl.userList = response.data;
+        });
     }
-}]);
+});
