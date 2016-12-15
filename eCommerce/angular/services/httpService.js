@@ -12,6 +12,9 @@ app.service('httpService',function ($rootScope, $http, $cookies, $location, sess
             if(err.status === 401) {
                return logoutUser();
             }
+            if(err.status === 404) {
+                return $location.path('/pageNotFound');
+            }
             return callback(err, null);
         });
     }

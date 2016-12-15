@@ -5,28 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./css/bootstrap.css">
-    <!--<base href="/">-->
     <title>eCommerce</title>
 </head>
 
 <body>
 <div class="container">
-    <div class="page-header">
-        <div class="row">
-            <div class="col-sm-3">
-                <h2><span class="label label-primary">E-Commerce</span></h2>
-            </div>
-            <div class="col-sm-6"></div>
-            <div class="col-sm-3">
-                <h3>
-                    <button ng-show="displayLogout" ng-click="logoutUser()" class="btn btn-danger pull-right">Logout</button>
-                </h3>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <ng-view></ng-view>
-    </div>
+    <header-view></header-view>
+    <ng-view></ng-view>
 </div>
 
 <!-- Vendors -->
@@ -39,6 +24,7 @@
 <script src="/main.js"></script>
 
 <!-- Controllers -->
+<script src="/controllers/headerController.js"></script>
 <script src="/controllers/loginController.js"></script>
 <script src="/controllers/userController.js"></script>
 
@@ -46,5 +32,8 @@
 <script src="/services/userService.js"></script>
 <script src="/services/sessionService.js"></script>
 <script src="/services/httpService.js"></script>
+
+<!-- Directives -->
+<script src="/directives/headerView.js"></script>
 </body>
 </html>

@@ -21,6 +21,9 @@ app.config(function ($routeProvider, $locationProvider) {
             controller: 'userController',
             controllerAs: 'userCtrl'
         })
+        .when('/pageNotFound', {
+            templateUrl: 'views/error.html'
+        })
         .otherwise({redirectTo: '/'});
 
 });
