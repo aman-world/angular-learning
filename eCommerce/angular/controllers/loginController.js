@@ -3,7 +3,6 @@ app.controller('loginController', function ($rootScope, $cookies, $location, use
     loginCtrl.isloginError = false;
     loginCtrl.errorMessage = '';
     loginCtrl.authenticateUser = authenticateUser;
-    loginCtrl.deAuthenticateUser = deAuthenticateUser;
     init();
 
     function authenticateUser() {
@@ -23,17 +22,10 @@ app.controller('loginController', function ($rootScope, $cookies, $location, use
         });
     }
 
-    function deAuthenticateUser() {
-        sessionService.removeSessionId();
-        $cookies.remove('userName');
-        $location.path('/login');
-    }
-
     function init(){
         sessionService.removeSessionId();
         $cookies.remove('userName');
         loginCtrl.errorMessage = '';
         $rootScope.displayLogout = false;
-        $rootScope.deAuthenticateUser = loginCtrl.deAuthenticateUser;
     }
 });

@@ -2,7 +2,7 @@
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
         <form name="loginForm" ng-submit="loginCtrl.authenticateUser()" novalidate>
-            <div class="form-group">
+            <div class="form-group" align="center">
                 <span class="alert alert-warning" ng-show="loginForm.email.$touched && loginForm.email.$error.required">Email Required!</span>
                 <span class="alert alert-warning" ng-show="loginForm.email.$touched && loginForm.email.$error.email">Invalid Email Address!</span>
                 <span class="alert alert-warning"

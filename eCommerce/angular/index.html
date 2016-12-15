@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <!--<base href="/">-->
     <title>eCommerce</title>
 </head>
 
@@ -18,7 +19,7 @@
             <div class="col-sm-6"></div>
             <div class="col-sm-3">
                 <h3>
-                    <button ng-show="displayLogout" ng-click="deAuthenticateUser()" class="btn btn-danger pull-right">Logout</button>
+                    <button ng-show="displayLogout" ng-click="logoutUser()" class="btn btn-danger pull-right">Logout</button>
                 </h3>
             </div>
         </div>
@@ -32,8 +33,8 @@
 <script src="/js/angular.js"></script>
 <script src="/js/angular-route.js"></script>
 <script src="/js/angular-cookies.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/jquery.js"></script>
+<script src="/js/bootstrap.js"></script>
 
 <script src="/main.js"></script>
 
@@ -44,5 +45,6 @@
 <!-- Services -->
 <script src="/services/userService.js"></script>
 <script src="/services/sessionService.js"></script>
+<script src="/services/httpService.js"></script>
 </body>
 </html>

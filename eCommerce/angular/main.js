@@ -1,10 +1,10 @@
 var app = angular.module('eCommerce', ['ngRoute', 'ngCookies']);
 
-app.run(function($rootScope) {
+app.run(function ($rootScope) {
     $rootScope.date = new Date();
 });
 
-app.config(function ($routeProvider) {
+app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
         .when('/', {
             templateUrl: 'views/login.html',
@@ -21,5 +21,6 @@ app.config(function ($routeProvider) {
             controller: 'userController',
             controllerAs: 'userCtrl'
         })
-        .otherwise({redirectTo:'/'});
+        .otherwise({redirectTo: '/'});
+
 });
