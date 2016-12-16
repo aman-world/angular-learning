@@ -1,3 +1,3 @@
-app.controller('headerController', function () {
+app.controller('headerController', function ($location) {
     var headerCtrl = this;
 });

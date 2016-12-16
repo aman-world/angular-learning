@@ -1,0 +1,37 @@
+<div>
+    <div class="col-sm-3">
+        <div class="panel panel-default">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+                <form>
+                    <div class="form-group">
+                        <label for="search">Search Products:</label>
+                        <input type="text" id="search" name="search" ng-model="productCtrl.searchProduct" class="form-control">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-9">
+        <div class="panel panel-default">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div ng-repeat="product in productCtrl.productList | filter:productCtrl.searchProduct">
+                        <div class="col-sm-4">
+                        <div class="thumbnail">
+                            <a ng-href="{{product.imageUrl}}" target="_blank">
+                                <img style="max-height:150px" ng-src="{{product.imageUrl}}" alt="{{product.productName}}" class="img-responsive">
+                            </a>
+                            <div class="caption">
+                                <div><span class="text-primary">{{product.productName}}</span></div>
+                                <div><span class="text-success">₹{{product.price}}</span><button class="btn btn-sm btn-primary pull-right">Add To Cart</button></div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

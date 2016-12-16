@@ -1,13 +1,16 @@
 <div class="page-header">
     <div class="row">
-        <div class="col-sm-3">
-            <h2><span class="label label-primary">E-Commerce</span></h2>
-        </div>
-        <div class="col-sm-6"></div>
-        <div class="col-sm-3">
-            <h3>
-                <button ng-show="displayLogout" ng-click="logoutUser()" class="btn btn-danger pull-right">Logout</button>
-            </h3>
-        </div>
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <span class="navbar-brand">E-Commerce</span>
+            </div>
+            <ul class="nav navbar-nav" ng-show="displayOtherNav">
+                <li><a href="#/users">Users</a></li>
+                <li><a href="#/products">Products</a></li>
+            </ul>
+            <div class="nav navbar-nav pull-right">
+                <button ng-show="displayLogout" ng-click="logoutUser()" class="btn btn-danger navbar-btn mr-8">Logout</button>
+            </div>
+        </nav>
     </div>
 </div>

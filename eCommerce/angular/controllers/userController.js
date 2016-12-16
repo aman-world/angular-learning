@@ -57,6 +57,7 @@ app.controller('userController', function ($rootScope, $cookies, sessionService,
     function init() {
         userCtrl.sessionId = sessionService.getSessionId();
         $rootScope.displayLogout = true;
+        $rootScope.displayOtherNav = true;
         userCtrl.getUserList();
     }
 });

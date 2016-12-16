@@ -23,9 +23,13 @@ app.controller('loginController', function ($rootScope, $cookies, $location, use
     }
 
     function init(){
-        sessionService.removeSessionId();
-        $cookies.remove('userName');
+        // sessionService.removeSessionId();
+        // $cookies.remove('userName');
+        if (sessionService.getSessionId()) {
+            $location.path('/users');
+        }
         loginCtrl.errorMessage = '';
         $rootScope.displayLogout = false;
+        $rootScope.displayOtherNav = false;
     }
 });

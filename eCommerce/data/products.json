@@ -1,0 +1,32 @@
+[
+    {
+        "imageUrl": "/images/one.jpeg",
+        "productName": "Royal Oak Atlas Engineered Wood Coffee Table",
+        "price":"4,990",
+        "sku": "135841"
+    },
+    {
+        "imageUrl": "/images/two.jpeg",
+        "productName": "Royal Oak Hunter Solid Wood Dining Set",
+        "price":"5,990",
+        "sku": "135842"
+    },
+    {
+        "imageUrl": "/images/three.jpeg",
+        "productName": "Royal Oak Berlin Engineered Wood Entertainment Unit",
+        "price":"3,990",
+        "sku": "135843"
+    },
+    {
+        "imageUrl": "/images/four.jpeg",
+        "productName": "Royal Oak Engineered Wood Shoe Cabinet",
+        "price":"4,490",
+        "sku": "135844"
+    },
+    {
+        "imageUrl": "/images/five.jpeg",
+        "productName": "Royal Oak Milan Engineered Wood Bedside Table",
+        "price":"6,990",
+        "sku": "135845"
+    }
+]
