@@ -26,6 +26,11 @@ app.config(function ($routeProvider, $locationProvider) {
             controller: 'productController',
             controllerAs: 'productCtrl'
         })
+        .when('/cart', {
+            templateUrl: 'views/cart.html',
+            controller: 'cartController',
+            controllerAs: 'cartCtrl'
+        })
         .when('/pageNotFound', {
             templateUrl: 'views/error.html'
         })

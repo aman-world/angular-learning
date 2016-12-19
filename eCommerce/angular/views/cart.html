@@ -1,0 +1,48 @@
+<div>
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+                <form novalidate>
+                    <div align="center" class="form-group" ng-if="cartCtrl.cartList.length > 0" >
+                        <table class="table table-hover ">
+                            <thead>
+                            <tr class="success">
+                                <th>Item</th>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                                <th>price</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="cartItem in cartCtrl.cartList">
+                                <td>
+                                    <div class="thumbnail mb-4">
+                                        <a ng-href="{{cartItem.imageUrl}}" target="_blank">
+                                            <img style="max-height:100px" ng-src="{{cartItem.imageUrl}}" alt="{{cartItem.productName}}" class="img-responsive">
+                                        </a>
+                                    </div>
+                                </td>
+                                <td>{{cartItem.productName}}</td>
+                                <td>{{cartItem.qty}}
+                                    <!--<input type="number" class="input-mini" ng-model="cartItem.qty" required>-->
+                                </td>
+                                <td>₹{{cartItem.price}}</td>
+                                <td><a class="close" data-dismiss="alert" aria-label="close" ng-click="cartCtrl.removeFromCart(cartItem.sku)">&times;</a></td>
+                            </tr>
+                            <tr class="success" ng-if="cartCtrl.cartList.length > 0">
+                                <td></td><td></td><td><span>Total Amount</span></td><td>₹{{cartCtrl.totalAmount}}</td><td></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div align="center" class="form-group" ng-if="cartCtrl.cartList.length == 0">
+                        <br/>
+                        <span class="alert alert-warning">No Item Added Into Cart</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

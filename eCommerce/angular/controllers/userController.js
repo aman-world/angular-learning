@@ -1,4 +1,4 @@
-app.controller('userController', function ($rootScope, $cookies, sessionService, userService) {
+app.controller('userController', function ($rootScope, $cookies, sessionService, userService, commonService) {
     var userCtrl = this;
     userCtrl.userList = [];
     userCtrl.sessionId = null;
@@ -56,8 +56,8 @@ app.controller('userController', function ($rootScope, $cookies, sessionService,
 
     function init() {
         userCtrl.sessionId = sessionService.getSessionId();
-        $rootScope.displayLogout = true;
-        $rootScope.displayOtherNav = true;
+        commonService.populateCartIcon();
+        commonService.displayHeaders();
         userCtrl.getUserList();
     }
 });

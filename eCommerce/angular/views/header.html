@@ -4,12 +4,18 @@
             <div class="navbar-header">
                 <span class="navbar-brand">E-Commerce</span>
             </div>
+            <div>
             <ul class="nav navbar-nav" ng-show="displayOtherNav">
                 <li><a href="#/users">Users</a></li>
                 <li><a href="#/products">Products</a></li>
             </ul>
-            <div class="nav navbar-nav pull-right">
+            <div ng-show="displayCartIcon" class="nav navbar-nav pull-right">
+                <a href="#/cart" class="btn btn-info navbar-btn">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                    <span class="badge">{{cartCount}}</span>
+                </a>
                 <button ng-show="displayLogout" ng-click="logoutUser()" class="btn btn-danger navbar-btn mr-8">Logout</button>
+            </div>
             </div>
         </nav>
     </div>

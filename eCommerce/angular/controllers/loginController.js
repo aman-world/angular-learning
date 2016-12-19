@@ -1,4 +1,4 @@
-app.controller('loginController', function ($rootScope, $cookies, $location, userService, sessionService) {
+app.controller('loginController', function ($rootScope, $cookies, $location, userService, sessionService, commonService) {
     var loginCtrl = this;
     loginCtrl.isloginError = false;
     loginCtrl.errorMessage = '';
@@ -17,19 +17,16 @@ app.controller('loginController', function ($rootScope, $cookies, $location, use
             }
             $cookies.put('userName', response.data.name);
             sessionService.setSessionId(response.data.sessionId);
-            $rootScope.displayLogout = true;
             $location.path('/users');
         });
     }
 
     function init(){
-        // sessionService.removeSessionId();
-        // $cookies.remove('userName');
         if (sessionService.getSessionId()) {
             $location.path('/users');
         }
         loginCtrl.errorMessage = '';
-        $rootScope.displayLogout = false;
-        $rootScope.displayOtherNav = false;
+        commonService.hideHeaders();
+
     }
 });

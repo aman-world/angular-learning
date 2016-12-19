@@ -1,4 +1,10 @@
 <div>
+   <!-- <div>
+        <div id="productCtrl.cartDiv" ng-show="productCtrl.displayCartMessage" class="alert alert-success alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{productCtrl.cartMessage}}
+        </div>
+    </div>-->
     <div class="col-sm-3">
         <div class="panel panel-default">
             <div class="panel-heading"></div>
@@ -25,8 +31,9 @@
                             </a>
                             <div class="caption">
                                 <div><span class="text-primary">{{product.productName}}</span></div>
-                                <div><span class="text-success">₹{{product.price}}</span><button class="btn btn-sm btn-primary pull-right">Add To Cart</button></div>
+                                <div><span class="text-success">₹{{product.price}}</span></div>
                             </div>
+                            <div><button id="{{product.sku}}" ng-click="productCtrl.addToCart(product.sku, 1)" class="btn btn-sm btn-primary">Add To Cart</button></div>
                         </div>
                         </div>
                     </div>
