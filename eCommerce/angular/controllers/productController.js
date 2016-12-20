@@ -2,12 +2,11 @@ app.controller('productController', function ($rootScope, $cookies, sessionServi
     var productCtrl = this;
     productCtrl.productList = [];
     productCtrl.cartList = [];
-    // productCtrl.cartMessage = '';
-    // productCtrl.displayCartMessage = false;
+    productCtrl.searchResult = [];
+    productCtrl.noSearchResultFound = false;
     productCtrl.getProductList = getProductList;
     productCtrl.addToCart = addToCart;
     init();
-
 
     function getProductList() {
         productService.getProductList(sessionService.getSessionId(), function (err, response) {
@@ -27,20 +26,18 @@ app.controller('productController', function ($rootScope, $cookies, sessionServi
             }
         }
         if (isProductExists) {
-            /*productCtrl.cartDiv.removeClass('btn-success');
-             productCtrl.cartDiv.addClass('btn-warning');
              productCtrl.displayCartMessage = true;
-             productCtrl.cartMessage = 'Product already added to the cart.';*/
-            return alert("Product already added to the cart");
+             productCtrl.cartMessage = 'Product already added to the cart.';
+             return;
+            // return alert("Product already added to the cart");
         }
         productCtrl.cartList.push({sku: skuNo, qty:qty});
         $cookies.putObject("cartItems", productCtrl.cartList);
         commonService.populateCartIcon();
-        /* productCtrl.cartDiv.addClass('btn-success');
-         productCtrl.cartDiv.removeClass('btn-warning');
          productCtrl.displayCartMessage = true;
-         productCtrl.cartMessage = 'Product successfully added to the cart.';*/
-        return alert("Product successfully added to the cart");
+         productCtrl.cartMessage = 'Product successfully added to the cart.';
+         return;
+        // return alert("Product successfully added to the cart");
     }
 
 

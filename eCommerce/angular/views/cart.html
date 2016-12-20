@@ -39,7 +39,13 @@
                     </div>
                     <div align="center" class="form-group" ng-if="cartCtrl.cartList.length == 0">
                         <br/>
-                        <span class="alert alert-warning">No Item Added Into Cart</span>
+                        <div>
+                            <span class="alert alert-warning">There are no items in this cart.</span>
+                        </div>
+                        <br/>
+                        <div>
+                            <a href="#/products" class="btn btn-primary">Continue Shopping</a>
+                        </div>
                     </div>
                 </form>
             </div>

@@ -9,7 +9,6 @@
                         <label for="search">Search User:</label>
                         <input type="text" id="search" name="search" ng-model="search" class="form-control">
                     </div>
-
                     <div align="center" class="form-group" ng-if="userCtrl.userList.length > 0" >
                         <table class="table table-striped table-hover table-bordered">
                             <thead>
@@ -19,16 +18,20 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="user in userCtrl.userList | filter:search | orderBy:userCtrl.orderByParam:userCtrl.reverseOrder">
+                            <tr ng-repeat="user in userCtrl.searchResult = (userCtrl.userList | filter:{name: search} | orderBy:userCtrl.orderByParam:userCtrl.reverseOrder)">
                                 <td>{{user.name}}</td>
                                 <td>{{user.email}}</td>
                             </tr>
                             </tbody>
                         </table>
+                        <div align="center" class="form-group" ng-if="userCtrl.searchResult.length == 0">
+                            <br/>
+                            <span class="alert alert-warning">No search result found</span>
+                        </div>
                     </div>
                     <div align="center" class="form-group" ng-if="userCtrl.userList.length == 0">
                         <br/>
-                        <span class="alert alert-warning">No User Found</span>
+                        <span class="alert alert-warning">No user found</span>
                     </div>
                 </form>
             </div>
@@ -42,21 +45,17 @@
                 <form name="addUserForm" ng-model="userCtrl.addUserForm" novalidate>
                     <div class="form-group">
                         <label for="newUsername">Username:</label>
-                        <input type="text" id="newUsername" name="newUsername" ng-model="userCtrl.newUser.name" class="form-control" required>
-                        <span class="alert text-warning" ng-show="addUserForm.newUsername.$touched && addUserForm.newUsername.$error.required">Username Required!</span>
+                        <input type="text" id="newUsername" ng-mousedown="userCtrl.isAddNewUserError=false" ng-model="userCtrl.newUser.name" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="newUserEmail">Email:</label>
-                        <input type="email" id="newUserEmail" ng-mousedown="userCtrl.isAddNewUserError=false" name="newUserEmail" ng-model="userCtrl.newUser.email" class="form-control" required>
-                        <span class="alert text-warning" ng-show="addUserForm.newUserEmail.$touched && addUserForm.newUserEmail.$error.required">Email Required!</span>
-                        <span class="alert text-warning" ng-show="addUserForm.newUserEmail.$touched && addUserForm.newUserEmail.$error.email">Invalid Email Address!</span>
+                        <input type="text" id="newUserEmail" ng-mousedown="userCtrl.isAddNewUserError=false" ng-model="userCtrl.newUser.email" class="form-control" required>
                     </div>
-
                     <div class="form-group">
                         <button name="addUser" ng-click="userCtrl.addNewUser()" class="btn btn-primary">Add User</button>
                     </div>
                     <div class="form-group">
-                        <span class="alert text-warning" ng-show="userCtrl.isAddNewUserError">{{userCtrl.addNewUserError}}</span>
+                        <span class="text-warning" ng-show="userCtrl.isAddNewUserError">{{userCtrl.addNewUserError}}</span>
                     </div>
                 </form>
             </div>

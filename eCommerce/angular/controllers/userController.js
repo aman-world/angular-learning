@@ -6,6 +6,7 @@ app.controller('userController', function ($rootScope, $cookies, sessionService,
     userCtrl.isAddNewUserError = false;
     userCtrl.addNewUserError = '';
     userCtrl.newUser = {};
+    userCtrl.searchResult = [];
     userCtrl.getUserList = getUserList;
     userCtrl.orderBy = orderBy;
     userCtrl.addNewUser = addNewUser;
@@ -26,8 +27,21 @@ app.controller('userController', function ($rootScope, $cookies, sessionService,
     }
 
     function addNewUser() {
+        if (!userCtrl.newUser.email || !userCtrl.newUser.name) {
+            userCtrl.isAddNewUserError = true;
+            userCtrl.addNewUserError = 'Username or Email should not be empty!';
+            return;
+        }
+
         var email = userCtrl.newUser.email.trim().toLowerCase();
         var name = toTitleCase(userCtrl.newUser.name.trim());
+
+        if (!isValidEmail(email)) {
+            userCtrl.addNewUserError = 'Invalid email address!';
+            userCtrl.isAddNewUserError = true;
+            return;
+        }
+
         var emailAlreadyExists = false;
         for (var i = 0; i < userCtrl.userList.length; ++i) {
             var user = userCtrl.userList[i];
@@ -38,7 +52,7 @@ app.controller('userController', function ($rootScope, $cookies, sessionService,
         }
         if (emailAlreadyExists) {
             userCtrl.isAddNewUserError = true;
-            userCtrl.addNewUserError = 'Email already in use.';
+            userCtrl.addNewUserError = 'Email already in use!';
             return;
         }
         var user = {
@@ -48,6 +62,11 @@ app.controller('userController', function ($rootScope, $cookies, sessionService,
         userCtrl.userList.push(user);
         console.log(userCtrl.userList);
         userCtrl.newUser = {};
+    }
+
+    function isValidEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
     }
 
     function toTitleCase(str) {
