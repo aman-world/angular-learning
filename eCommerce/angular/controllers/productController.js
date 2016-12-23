@@ -18,6 +18,8 @@ app.controller('productController', function ($rootScope, $cookies, sessionServi
     }
 
     function addToCart(skuNo, qty) {
+        var cartItems = $cookies.getObject('cartItems');
+        productCtrl.cartList = cartItems;
         var isProductExists = false;
         for (var i = 0; i < productCtrl.cartList.length; i++) {
             if (productCtrl.cartList[i].sku == skuNo) {
@@ -26,18 +28,16 @@ app.controller('productController', function ($rootScope, $cookies, sessionServi
             }
         }
         if (isProductExists) {
-             productCtrl.displayCartMessage = true;
-             productCtrl.cartMessage = 'Product already added to the cart.';
-             return;
-            // return alert("Product already added to the cart");
+            commonService.populateCartIcon();
+            productCtrl.displayCartMessage = true;
+            productCtrl.cartMessage = 'Product already added to the cart.';
+            return;
         }
         productCtrl.cartList.push({sku: skuNo, qty:qty});
         $cookies.putObject("cartItems", productCtrl.cartList);
         commonService.populateCartIcon();
-         productCtrl.displayCartMessage = true;
-         productCtrl.cartMessage = 'Product successfully added to the cart.';
-         return;
-        // return alert("Product successfully added to the cart");
+        productCtrl.displayCartMessage = true;
+        productCtrl.cartMessage = 'Product successfully added to the cart.';
     }
 
 
