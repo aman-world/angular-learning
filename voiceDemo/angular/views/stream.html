@@ -1,0 +1,30 @@
+<div>
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+                <form name="voiceForm" ng-submit="" novalidate>
+                    <div class="form-group">
+                        <button id="record" ng-click="streamCtrl.startRecording()" class="form-control btn btn-primary center-block">Record</button>
+                    </div>
+                    <div class="form-group">
+                        <button id="stop" ng-click="streamCtrl.stopRecording()" class="form-control btn btn-danger center-block">Stop</button>
+                    </div>
+                    <div class="form-group">
+                        <button id="byPlayer" ng-click="streamCtrl.playUsingPlayer()" class="form-control btn btn-primary center-block">Play Using Player</button>
+                    </div>
+                    <div class="form-group">
+                        <button id="streamAudio" ng-click="streamCtrl.streamAudio()" class="form-control btn btn-primary center-block">Stream Audio</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="application/javascript">
+        window.reload = function() {
+            streamCtrl.closeWSConnection()
+        };
+    </script>
+    <div class="col-sm-3"></div>
+</div>
