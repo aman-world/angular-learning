@@ -51,6 +51,7 @@ app.controller('streamController', function ($rootScope, $location) {
     };
 
     function startRecording() {
+        // mediaRecorder.start(1000);
         mediaRecorder.start();
         console.log("mediaRecorder state: ",mediaRecorder.state);
         console.log("recorder started");
@@ -64,11 +65,15 @@ app.controller('streamController', function ($rootScope, $location) {
         mediaRecorder.ondataavailable = function(e) {
             console.log('ondataavailable: ', e.data);
             chunks.push(e.data);
+            // ws.send(e.data);
+            // var superBuffer = new Blob([e.data], {type: 'audio/ogg'}); // It specifies the container format as well as the audio and video capture formats.
+            // console.log("sendRecordedData ",superBuffer);
+            // ws.send(superBuffer);
         };
     }
 
     function sendRecordedData() {
-        var superBuffer = new Blob(chunks);
+        var superBuffer = new Blob(chunks, {type: 'audio/ogg'}); // It specifies the container format as well as the audio and video capture formats.
         console.log("sendRecordedData ",superBuffer);
         ws.send(superBuffer);
     }
@@ -128,7 +133,7 @@ app.controller('streamController', function ($rootScope, $location) {
 
             var onSuccess = function(stream) {
                 var options = {
-                    audioBitsPerSecond : 128000,
+                    audioBitsPerSecond : 131072,
                     mimeType : 'audio/webm'
                 };
                 mediaRecorder = new MediaRecorder(stream, options);
